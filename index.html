@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/f.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira Sans">
+    <link rel="stylesheet" href="./assets/css/smooth.css">
+    <link rel="stylesheet" href="./assets/css/scroll.css">
+    <title>fundraiser by Ann Callahan</title>
+    <link rel="shortcut icon" type="image/png" href="./assets/img/little-liam1.jpg" />
+    <meta name="description" content="YouCaring | #1 Crowdfunding platform">
+</head>
+
+<body>
+
+
+    <div class="modal-contact">
+        <div class="modal-content-contact">
+            <span class="close-button-contact">×</span>
+            <h3>Write a message</h3>
+            <div>
+                <div>
+                    <input placeholder="Your name" id="sendName" class="input-items form-control" type="text">
+                </div>
+                <div>
+                    <input placeholder="Your email" id="sendEmail" class="input-items form-control" type="email">
+                </div>
+                <div>
+                    <textarea placeholder="Your message" id="sendMes" class="form-control" name="" cols="30"
+                        rows="5"></textarea>
+                </div>
+                <div class="p-1 text-danger" id="responseErrorCon"></div>
+                <div class="p-1 text-success" id="responseSuccessCon"></div>
+                <div>
+                    <button id="send-message" class="send-message">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="overAll">
+        <div class="navItem">
+            <i class="fas fa-search p-2 dbtn nav-btn openBtn" onclick="openSearch()"></i>
+            <a href="https://www.gofundme.com/c/youcaring"><img class="img-fluid logoImg" src="./assets/img/YouCaring.png" alt=""></a>
+            <a class="nav-sign" href="https://www.gofundme.com/c/youcaring">Sign in</a>
+        </div>
+    </section>
+    <div id="myOverlay" class="overlay">
+        <span class="closebtn" onclick="closeSearch()" title="Close Search">×</span>
+        <div class="overlay-content">
+
+            <input type="text" class="form-control" placeholder="Search.." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Help By Sharing</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <h6>Fundraisers shared on social networks raise up to 5x more.</h6>
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="d-flex">
+                                    <input id="url-input" type="text" class="form-control" readonly>
+                                    <button type="button" class="sharebtn">Copy</button>
+                                </div>
+                                <div class="copied">Copied ✓</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-foote">
+                    <h6><b>Tip:</b> Paste this fundraiser link anywhere</h6>
+                </div>
+                <div class="social-share">
+                    <span class="fab fa-facebook media"></span>
+                    <span class="fab fa-instagram media"></span>
+                    <span class="fab fa-twitter media"></span>
+                    <span class="fab fa-youtube media"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+         const copyBtn = document.querySelector('.sharebtn');
+    copyBtn.onclick = e => {
+        navigator.clipboard.writeText(url.value);
+        document.querySelector('.copied').style.display = "block";
+    }
+    </script>
+
+
+    <!-- <div id="myModal" class="modal2">
+
+
+        <div class="modal-content">
+            <div class="">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row d-flex justify-content-center allForm">
+                        <h5 class="owner">You are supporting <span class="ownerTitle"><?= $p_title ?></span> fundraiser</h5>
+                        <div class="col-md-5 col-sm-12 form">
+                            <div id="paymentForm">
+                                <label class="label-1">Enter your donation</label>
+                                <div class="input-group mb-2">
+                                    <span class="input-group-text">$</span>
+                                    <input id="donorAmount" class="form-control donate-amount" type="text">
+                                    <span class="input-group-text">.00</span>
+                                </div>
+                                <div class="mb-2">
+                                    <input id="donorEmail" class="form-control" type="email" placeholder="Enter Email">
+                                </div>
+                                <div class="mb-2">
+                                    <input id="donorName" class="form-control" type="text" placeholder="Enter Name">
+                                </div>
+                                <div class="mb-2">
+                                    <textarea class="form-control" id="donorComment" cols="30" rows="4" placeholder="Words of support"></textarea>
+                                </div>
+                                <div class="p-1 text-danger" id="responseError"></div>
+                                <div class="p-1 text-success" id="responseSuccess"></div>
+                                <div>
+                                    <button id="DonateBtn" class="continueBtn">Continue</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> -->
+
+
+
+
+    <section class="first-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <img class="img-fluid camImg" src="./assets/img/little-liam1.jpg" alt="Little Liam picture">
+                        
+                        <h1 class="gg">Support for Liam's Battle Against Leukemia</h1>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="amountMatter">
+                        <span>
+                            <h6 style="font-weight: bold;">$</h6>
+                        </span>
+                        <h6 id="amoraised" class="amountRaised">5,100</h6>
+                        <h6 class="usd">raised of</h6>
+                        <span class="amountRequiired">
+                            <h6>$</h6>
+                        </span>
+                        <h6 id="amoneeded">45,000 goal</h6>
+                    </div>
+                    <div class="progress" style="height: 8px;">
+                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="25"
+                            aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="dons">
+                        <h6>raised by 10 people</h6>
+                    </div>
+                    <div class="house">
+                        <div>
+                            <button class="shareButt form-control" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">Share</button>
+                        </div>
+                        <div>
+                            <a class="leadinglink" href="https://paystack.com/pay/oqsf7gro2z"><button id="myBtn"
+                                    class="donateButt form-control">Donate</button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const sha = document.querySelector('.dons');
+        const house = document.querySelector('.house');
+        window.onscroll = e => {
+            const offset = sha.getBoundingClientRect().top;
+            if (offset <= 40) {
+                house.classList.add('trans');
+            } else {
+                house.classList.remove('trans');
+            }
+        }
+    </script>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="nameProfile">
+                        <img src="./assets/img/profile-icon.png" alt="">
+                        <img class="unitedimg" src="./assets/img/Unitedflag.png" alt="">
+                        <h6>Ann Callahan</h6> 
+                    </div>
+                    <div class="identify">
+                        <h6>Identity Verified</h6>
+                        <img class="verified" src="./assets/img/verified.png" alt="">
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="typeItem">
+                        <h6 class="createdDay">Created 2days ago</h6>
+                        <i class="fas fa-arrow-right"></i>
+                        <h6 class="createdType">Medical & Health</h6>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <p>My name is Ann Callahan and I am organizing this fundraiser on behalf of the family of little
+                            Liam Timothy. Their little boy has been battling sickness for over a month now. For the last
+                            two weeks he has had an unbroken fever, and has been absolutely pitiful. They received
+                            bloodwork last week that resulted in Liam being taken to Children's Hospital in Birmingham
+                            for further testing. It has now been confirmed that our sweet boy has Leukemia. In the short
+                            time he's been at Children's he has undergone several blood transfusions, and is going to
+                            have a bone marrow biopsy as well as a spinal tap this upcoming Monday. Liam's mom works as
+                            a hairdresser and his dad works in construction, and they will have to be in and out of work
+                            for the foreseeable future while Liam is undergoing his cancer treatments. My hope is for
+                            them to be able to focus on their sweet baby without having to worry about their finances.
+                            If it is put on your heart to donate to this family in their time of need, no amount is too
+                            small and any donation is appreciated.</p>
+
+                        <p> Please keep all of them in your thoughts and prayers as they continue down this difficult
+                            road. Prayer's for Liam to return to his happy, strong-willed, outside loving little self.
+                            Prayers for Liam's family. And prayers for his medical team.</p>
+
+                        <p>All funds will go towards helping with Liam's medical expenses, and helping the Timothy's
+                            pay their bills while they are unable to work.</p>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <h4>Updates(0)</h4>
+                        <h6 class="organ"></h6>
+                        <p></p>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contactSecton">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="contactDetails">
+                        <img class="img-fluid" src="./assets/img/profile-icon.png" alt="">
+                        <h6>Ann Callahan</h6></h6>
+                    </div>
+                    <div class="DetailsContact">
+                        <button type="button" class="contactbtn trigger">Contact</button>
+                        <h6>Gulfport, Mississippi</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.getElementById('send-message').onclick = (e) => {
+            let successMes = document.getElementById('responseSuccessCon');
+            let errorMes = document.getElementById('responseErrorCon');
+            let sendNameC = document.getElementById('sendName').value;
+            let sendEmailC = document.getElementById('sendEmail').value;
+            let sendMesC = document.getElementById('sendMes').value;
+            errorMes.innerHTML = "";
+
+            if (sendNameC == "" || sendEmailC == "" || sendMesC == "") {
+                errorMes.innerHTML = "All fields required";
+                return;
+            } else {
+                successMes.innerHTML = "Message sent sucessfully ✓"
+
+            }
+
+        }
+
+    </script>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <h4>Words of support(3)</h4>
+                        <h6>Please donate to share words of support.</h6>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="commentSecton">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div>
+                        <div class="donorsDetails mt-5">
+                            <img class="img-fluid" src="./assets/img/profile-icon.png" alt="">
+                            <h6>Mike Justin</h6>
+                        </div>
+                        <div class="donorsDetailsComment">
+                            <h6>$100</h6>
+                            <h6>Get well soon</h6>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="donorsDetails mt-5">
+                            <img class="img-fluid" src="./assets/img/profile-icon.png" alt="">
+                            <h6>Mary & Roben</h6>
+                        </div>
+                        <div class="donorsDetailsComment">
+                            <h6>$1,000</h6>
+                            <h6>Be strong buddy!</h6>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="donorsDetails mt-5">
+                            <img class="img-fluid" src="./assets/img/profile-icon.png" alt="">
+                            <h6>Lawrence</h6>
+                        </div>
+                        <div class="donorsDetailsComment">
+                            <h6>$250</h6>
+                            <h6>Aunt loves you Liam!</h6>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="donateMain">
+        <div class="donate">
+            <h3>Let's Create Your Donation Website!</h3>
+            <p class="lastp">Easily customize your page and start accepting online donations.</p>
+            <a href="https://www.gofundme.com/c/youcaring"><button class="howStart1">Start for free</button></a>
+        </div>
+    </section>
+
+</body>
+<script>
+    url = document.getElementById('url-input');
+    const modalContact = document.querySelector(".modal-contact");
+    const trigger = document.querySelector(".trigger");
+    const closeButton = document.querySelector(".close-button-contact");
+
+    function toggleModal() {
+        modalContact.classList.toggle("show-modal-contact");
+    }
+
+    function windowOnClick(event) {
+        if (event.target === modalContact) {
+            toggleModal();
+        }
+    }
+
+    trigger.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+    window.addEventListener("click", windowOnClick);
+
+    // const priceDiv = document.querySelector('#amoraised');
+    // priceDiv.textContent = (+priceDiv.textContent).toLocaleString('en-US');
+    // const amountDiv = document.querySelector('#amoneeded');
+    // amountDiv.textContent = (+amountDiv.textContent).toLocaleString('en-US');
+
+    function openSearch() {
+        document.getElementById("myOverlay").style.display = "block";
+    }
+
+    function closeSearch() {
+        document.getElementById("myOverlay").style.display = "none";
+    }
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+
+    var span = document.getElementsByClassName("close")[0];
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    url.value = window.location.href;
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    defaultValue = document.querySelector('.donate-amount');
+    defaultValue.value = 50;
+    defaultValue.style.color = "#000000";
+</script>
+
+<script src="./assets/js/jQuery.js"></script>
+<script src="./assets/js/response.js"></script>
+<script src="https://js.paystack.co/v1/inline.js"></script>
+<script src="./assets/js/bootstrap.bundle.js"></script>
+
+</html>

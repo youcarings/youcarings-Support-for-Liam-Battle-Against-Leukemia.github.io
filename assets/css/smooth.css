@@ -1,0 +1,79 @@
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-size: cover;
+  scroll-behavior: smooth;
+  font-family: 'PT Sans', sans-serif;
+  transition: 0.3s
+}
+
+:root {
+  --c1: rgb(1, 90, 1);
+  --c2: green;
+  --c3: #eef;
+  --c4: #060607ec;
+  --c5: grey;
+  --c6: rgb(65, 64, 64);
+  --c7: white;
+  --c8: rgb(243, 237, 237);
+  scrollbar-width: thin !important;
+}
+
+* {
+  scrollbar-width: thin !important;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 10px;
+  background-color: var(--c2);
+  border-radius: 3px;
+  opacity: .5;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  opacity: 1
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+.dtitle-shadow {
+  box-shadow: 0 0 10px #000
+}
+
+/* BACKGROUND */
+.bg1 {
+  background-color: var(--c1);
+}
+
+.bg2 {
+  background-color: var(--c2);
+}
+
+.bg3 {
+  background-color: var(--c3);
+}
+
+.bg4 {
+  background-color: var(--c4);
+}
+
+.bg5 {
+  background-color: var(--c5);
+}
+
+.bg6 {
+  background-color: var(--c6);
+}
+
+.bg7 {
+  background-color: var(--c7);
+}
